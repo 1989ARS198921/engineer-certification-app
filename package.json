@@ -4,8 +4,8 @@
   "description": "Приложение для подготовки к категории инженера",
   "main": "backend/server.js",
   "scripts": {
-    "start": "node backend/server.js",
-    "vercel-build": "echo 'Vercel build completed'"
+   "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
