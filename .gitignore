@@ -1,10 +1,24 @@
+# Node
 node_modules/
 npm-debug.log
 .env
-*.log
+
+# OS
 .DS_Store
 Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+
+# Backups
 *.bak
 *.backup
 
-
+# Data files (НЕ игнорируем!)
+# backend/data/*.json
+# !backend/data/*.example.json
