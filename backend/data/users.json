@@ -1,0 +1,81 @@
+[
+  {
+    "id": 1785232777211,
+    "username": "dsd",
+    "password": "$2a$10$wB.JRPIcY00ahHYv0qpvVu5psI.YC8fzHyIjjJCE5n7c0zMwUGJiW",
+    "createdAt": "2026-07-28T09:59:37.211Z",
+    "results": {},
+    "stats": {
+      "totalTests": 0,
+      "totalCorrect": 0,
+      "totalQuestions": 0,
+      "bestScore": 0,
+      "bestSection": ""
+    }
+  },
+  {
+    "id": 1785232825415,
+    "username": "dsd2",
+    "password": "$2a$10$gKKMf946st3xnnmm1/UIKeLOvaCxuBysUn7uiXHutFNJxtrPacMd6",
+    "createdAt": "2026-07-28T10:00:25.415Z",
+    "results": {
+      "Постановка на производство": [
+        {
+          "date": "2026-07-28T10:00:41.242Z",
+          "correct": 2,
+          "total": 5,
+          "percentage": 40
+        }
+      ]
+    },
+    "stats": {
+      "totalTests": 1,
+      "totalCorrect": 2,
+      "totalQuestions": 5,
+      "bestScore": 40,
+      "bestSection": "Постановка на производство"
+    }
+  },
+  {
+    "id": 1785232962528,
+    "username": "admin",
+    "password": "$2a$10$7s152JNJ/VaZx5ifj2YKu.Cir7i3IDXUgx210epciHTpJUrJgPOTK",
+    "createdAt": "2026-07-28T10:02:42.528Z",
+    "results": {},
+    "stats": {
+      "totalTests": 0,
+      "totalCorrect": 0,
+      "totalQuestions": 0,
+      "bestScore": 0,
+      "bestSection": ""
+    }
+  },
+  {
+    "id": 1785233006474,
+    "username": "dsds",
+    "password": "$2a$10$sMae9QbPwGuwLTjOsEl8M.5wlMqgeLFphyPYq.3dyWuPtLu.AU1WK",
+    "createdAt": "2026-07-28T10:03:26.474Z",
+    "results": {},
+    "stats": {
+      "totalTests": 0,
+      "totalCorrect": 0,
+      "totalQuestions": 0,
+      "bestScore": 0,
+      "bestSection": ""
+    }
+  },
+  {
+    "id": 1785233214824,
+    "username": "dsd21",
+    "password": "$2a$10$mlakIUYmSn2L1uYJyCWhY.K7FuNnwFn3/mwau4GwwKiOaP7YAyG1G",
+    "createdAt": "2026-07-28T10:06:54.824Z",
+    "results": {},
+    "stats": {
+      "totalTests": 0,
+      "totalCorrect": 0,
+      "totalQuestions": 0,
+      "bestScore": 0,
+      "bestSection": ""
+    }
+  }
+]

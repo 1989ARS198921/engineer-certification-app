@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подготовка к категории</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- ============================================================ -->
+        <!-- СТРАНИЦА ВХОДА -->
+        <!-- ============================================================ -->
+        <div id="page-login" style="display:block; min-height:100vh;">
+            <div class="auth-container">
+                <div class="auth-box">
+                    <h1>📚 Подготовка к категории</h1>
+                    <p class="subtitle">Войдите или зарегистрируйтесь</p>
+                    
+                    <div id="auth-error" class="auth-error" style="display:none;"></div>
+                    
+                    <div class="auth-tabs">
+                        <button class="auth-tab active" data-tab="login" onclick="switchAuthTab('login')">Вход</button>
+                        <button class="auth-tab" data-tab="register" onclick="switchAuthTab('register')">Регистрация</button>
+                    </div>
+                    
+                    <!-- Форма входа -->
+                    <div id="auth-login" class="auth-form">
+                        <input type="text" id="login-username" placeholder="Имя пользователя">
+                        <input type="password" id="login-password" placeholder="Пароль">
+                        <button class="btn btn-primary auth-btn" onclick="handleLogin()">Войти</button>
+                    </div>
+                    
+                    <!-- Форма регистрации -->
+                    <div id="auth-register" class="auth-form" style="display:none;">
+                        <input type="text" id="register-username" placeholder="Имя пользователя">
+                        <input type="password" id="register-password" placeholder="Пароль (минимум 4 символа)">
+                        <button class="btn btn-success auth-btn" onclick="handleRegister()">Зарегистрироваться</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- ГЛАВНАЯ СТРАНИЦА -->
+        <!-- ============================================================ -->
+        <div id="page-main" style="display:none; padding:20px; max-width:1200px; margin:0 auto;">
+            <header>
+                <div style="display:flex;justify-content:space-between;align-items:center; flex-wrap:wrap; gap:10px;">
+                    <h1>📚 Подготовка к категории</h1>
+                    <div style="display:flex;gap:10px;align-items:center;">
+                        <span id="user-name" style="font-size:14px;color:#666;"></span>
+                        <!-- Ссылка на админ-панель -->
+                        <a href="/admin.html" 
+                           style="color:#2196F3;text-decoration:none;font-size:14px;font-weight:600;cursor:pointer;padding:4px 8px;border-radius:4px;transition:background 0.2s;" 
+                           onmouseover="this.style.background='#e3f2fd'" 
+                           onmouseout="this.style.background='transparent'">
+                            ⚙️ Админ
+                        </a>
+                        <button class="btn-theme" onclick="toggleTheme()">🌙</button>
+                        <button onclick="handleLogout()" style="background:none;border:none;font-size:20px;cursor:pointer;">🚪</button>
+                    </div>
+                </div>
+                <p>Выберите раздел для изучения</p>
+            </header>
+
+            <!-- Переключатель режимов -->
+            <div style="display:flex;gap:10px;margin:12px 0;">
+                <button id="btn-mode-exam" class="mode-btn active" data-mode="exam" onclick="setMode('exam')">📝 Экзамен</button>
+                <button id="btn-mode-train" class="mode-btn" data-mode="train" onclick="setMode('train')">📖 Тренировка</button>
+            </div>
+
+            <div id="sections-list" class="sections-list">
+                <p style="color:#999;">Загрузка разделов...</p>
+            </div>
+
+            <button id="btn-exam" class="btn-exam" onclick="startExam()">🎓 Экзамен (10 вопросов)</button>
+
+            <div id="leaderboard-container" class="stats-container">
+                <h3>🏆 Рейтинг лучших</h3>
+                <div id="leaderboard-list"><p style="color:#999;">Загрузка...</p></div>
+            </div>
+
+            <div id="stats-container" class="stats-container">
+                <h3>📊 Ваш прогресс</h3>
+                <div id="stats-summary"></div>
+                <div id="charts-container"></div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- СТРАНИЦА ТЕСТА -->
+        <!-- ============================================================ -->
+        <div id="page-test" style="display:none; padding:20px; max-width:800px; margin:0 auto;">
+            <header>
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                    <button id="btn-back" class="btn-back">← Назад</button>
+                    <button class="btn-theme-small" onclick="toggleTheme()">🌙</button>
+                </div>
+                <h2 id="test-title">Тестирование</h2>
+                
+                <div id="progress-info">
+                    <span id="progress-text">0 из 0</span>
+                    <div class="progress-bar">
+                        <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <div style="display:flex;justify-content:space-between;margin-top:8px;">
+                    <span id="stats-counter" style="font-size:14px;color:#666;">✅ 0 | ❌ 0</span>
+                    <span id="hint-text" style="font-size:13px;color:#FF9800;display:none;">💡 Подсказка: ...</span>
+                </div>
+            </header>
+            
+            <div id="question-container">
+                <div id="question-text" class="question-text">Загрузка вопроса...</div>
+                <div id="answers-container" class="answers-container"></div>
+            </div>
+            
+            <button id="btn-next" class="btn-next" disabled>Далее →</button>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- СТРАНИЦА РЕЗУЛЬТАТОВ -->
+        <!-- ============================================================ -->
+        <div id="page-results" style="display:none; padding:20px; max-width:600px; margin:0 auto;">
+            <header style="text-align:center;">
+                <button id="btn-back-results" class="btn-back" style="text-align:left;display:block;">← Назад</button>
+                <div id="result-icon" class="result-icon">🎉</div>
+                <h2 id="result-title" class="result-title">Отлично!</h2>
+                <p id="result-score" class="result-score">10 из 10 (100%)</p>
+            </header>
+            
+            <div id="result-details" class="result-details">
+                <div id="result-comment"></div>
+                <div id="result-stats" style="margin-top:12px;font-size:14px;color:#666;"></div>
+            </div>
+            
+            <div class="result-buttons">
+                <button id="btn-retry" class="btn-retry">🔄 Пройти заново</button>
+                <button id="btn-home" class="btn-home">📚 К списку разделов</button>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- СТРАНИЦА ТЕОРИИ -->
+        <!-- ============================================================ -->
+        <div id="page-theory" style="display:none; padding:20px; max-width:900px; margin:0 auto;">
+            <header>
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                    <button id="btn-back-theory" class="btn-back">← Назад</button>
+                    <button class="btn-theme-small" onclick="toggleTheme()">🌙</button>
+                </div>
+                <h2 id="theory-title">Теория</h2>
+            </header>
+            
+            <div id="theory-content" class="theory-content">
+                <div class="theory-loading">Загрузка...</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
