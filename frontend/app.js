@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000';
+const API_URL = window.location.origin; // или 'https://engineer-certification-app-2ulj.onrender.com'
 
 let state = {
     sections: [],
