@@ -178,16 +178,6 @@ body {
     background: #d32f2f;
 }
 
-.auth-btn {
-    padding: 14px;
-    font-size: 16px;
-    font-weight: 600;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
 .btn-logout {
     background: none;
     border: none;
@@ -617,26 +607,6 @@ header p {
     cursor: not-allowed;
 }
 
-
-.btn-theory {
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    padding: 8px 12px;
-    border-radius: 8px;
-    transition: background 0.2s;
-    color: #2196F3;
-}
-
-.btn-theory:hover {
-    background: #e3f2fd;
-}
-
-[data-theme="dark"] .btn-theory:hover {
-    background: #1a3a5c;
-}
-
 /* ===== СТРАНИЦА ТЕОРИИ ===== */
 .theory-content {
     background: var(--bg-card);
@@ -645,23 +615,38 @@ header p {
     border: 1px solid var(--border-color);
     line-height: 1.8;
     color: var(--text-primary);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
-.theory-content h1, .theory-content h2, .theory-content h3 {
-    margin-top: 20px;
-    margin-bottom: 12px;
+.theory-content h1 {
+    font-size: 28px;
+    color: #2196F3;
+    border-bottom: 2px solid #2196F3;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+}
+
+.theory-content h2 {
+    font-size: 24px;
     color: var(--text-primary);
+    margin-top: 24px;
+    margin-bottom: 12px;
 }
 
-.theory-content h1 { font-size: 28px; }
-.theory-content h2 { font-size: 24px; }
-.theory-content h3 { font-size: 20px; }
+.theory-content h3 {
+    font-size: 20px;
+    color: var(--text-primary);
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
 
 .theory-content p {
     margin: 8px 0;
 }
 
-.theory-content ul, .theory-content ol {
+.theory-content ul,
+.theory-content ol {
     padding-left: 24px;
     margin: 8px 0;
 }
@@ -674,9 +659,14 @@ header p {
     width: 100%;
     border-collapse: collapse;
     margin: 12px 0;
+    font-size: 14px;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
-.theory-content th, .theory-content td {
+.theory-content th,
+.theory-content td {
     border: 1px solid var(--border-color);
     padding: 8px 12px;
     text-align: left;
@@ -685,6 +675,10 @@ header p {
 .theory-content th {
     background: var(--bg-secondary);
     font-weight: 600;
+}
+
+.theory-content tr:nth-child(even) {
+    background: var(--bg-secondary);
 }
 
 .theory-content code {
@@ -700,6 +694,12 @@ header p {
     padding-left: 16px;
     margin: 12px 0;
     color: var(--text-secondary);
+}
+
+.theory-content hr {
+    border: none;
+    border-top: 2px solid var(--border-color);
+    margin: 20px 0;
 }
 
 .theory-loading {
@@ -746,7 +746,8 @@ header p {
     gap: 12px;
 }
 
-.btn-retry, .btn-home {
+.btn-retry,
+.btn-home {
     padding: 14px;
     border: none;
     border-radius: 10px;
@@ -789,55 +790,463 @@ header p {
     color: var(--text-primary);
 }
 
-/* ===== АДАПТИВ ===== */
-@media (max-width: 600px) {
+/* ============================================================ */
+/* ===== МОБИЛЬНЫЕ УСТРОЙСТВА ===== */
+/* ============================================================ */
+
+@media screen and (max-width: 768px) {
     #app {
         padding: 10px;
     }
+
+    .auth-container {
+        padding: 10px;
+    }
+
     .auth-box {
         padding: 24px;
+        margin: 10px;
+        width: 100%;
     }
-    .section-item .name {
-        font-size: 16px;
+
+    .auth-box h1 {
+        font-size: 24px;
     }
-    .question-text {
-        font-size: 17px;
-    }
+
     header h1 {
         font-size: 22px;
     }
-    .result-title {
-        font-size: 24px;
-    }
-    #progress-info {
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-    .timer {
+
+    .section-item {
+        padding: 12px 16px;
         font-size: 14px;
-        min-width: 50px;
     }
+
+    .section-item .name {
+        font-size: 16px;
+    }
+
+    .section-item .icon {
+        font-size: 20px;
+    }
+
     .mode-btn {
         font-size: 14px;
         padding: 8px 12px;
     }
+
+    .btn-exam {
+        font-size: 14px;
+        padding: 12px;
+    }
+
     .stats-summary {
         grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
     }
+
+    .stat-card {
+        padding: 8px;
+    }
+
+    .stat-card .number {
+        font-size: 20px;
+    }
+
     .charts-container {
         grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
     }
+
     .chart-card canvas {
-        max-width: 100px;
-        max-height: 100px;
+        max-width: 120px;
+        max-height: 120px;
+    }
+
+    .question-text {
+        font-size: 17px;
+        padding: 16px 0;
+    }
+
+    .answer-item {
+        padding: 12px 14px;
+        font-size: 15px;
+    }
+
+    .btn-next {
+        font-size: 16px;
+        padding: 14px;
+    }
+
+    .result-title {
+        font-size: 26px;
+    }
+
+    .result-icon {
+        font-size: 48px;
+    }
+
+    .btn-retry,
+    .btn-home {
+        font-size: 15px;
+        padding: 12px;
+    }
+
+    #progress-info {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .timer {
+        font-size: 14px;
+        min-width: 50px;
+    }
+
+    .auth-tab {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .auth-form input {
+        font-size: 15px;
+        padding: 10px 12px;
+    }
+
+    .auth-btn {
+        font-size: 15px;
+        padding: 12px;
+    }
+
+    .theory-content {
+        padding: 16px;
+        font-size: 15px;
+    }
+
+    .theory-content h1 {
+        font-size: 22px;
+    }
+
+    .theory-content h2 {
+        font-size: 19px;
+    }
+
+    .theory-content h3 {
+        font-size: 17px;
+    }
+
+    .theory-content table {
+        font-size: 13px;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .theory-content th,
+    .theory-content td {
+        padding: 6px 8px;
+    }
+
+    .theory-content ul,
+    .theory-content ol {
+        padding-left: 18px;
+    }
+
+    .result-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .admin-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .admin-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .admin-stat-card {
+        padding: 10px;
+    }
+
+    .admin-stat-card .number {
+        font-size: 20px;
+    }
+
+    .section-admin {
+        padding: 10px;
+    }
+
+    .section-admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .section-admin-header h2 {
+        font-size: 16px;
+    }
+
+    .question-admin-item {
+        flex-wrap: wrap;
+        gap: 6px;
+        padding: 8px 0;
+    }
+
+    .question-admin-item .text {
+        font-size: 13px;
+        width: 100%;
+    }
+
+    .question-admin-item .actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .modal-content {
+        padding: 16px;
+        margin: 10px;
+        width: 95%;
+        max-height: 90vh;
+    }
+
+    .modal-content h2 {
+        font-size: 18px;
+    }
+
+    .modal-answers .answer-row {
+        flex-wrap: wrap;
+    }
+
+    .modal-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .modal-actions .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 10px 14px;
     }
 }
 
-@media (max-width: 400px) {
-    .charts-container {
-        grid-template-columns: 1fr;
+@media screen and (max-width: 480px) {
+    #app {
+        padding: 6px;
     }
+
+    .auth-box {
+        padding: 16px;
+    }
+
+    .auth-box h1 {
+        font-size: 20px;
+    }
+
+    header h1 {
+        font-size: 18px;
+    }
+
+    header p {
+        font-size: 13px;
+    }
+
+    .section-item {
+        padding: 10px 12px;
+    }
+
+    .section-item .name {
+        font-size: 14px;
+    }
+
+    .section-item .icon {
+        font-size: 18px;
+    }
+
+    .mode-btn {
+        font-size: 12px;
+        padding: 6px 8px;
+    }
+
+    .btn-exam {
+        font-size: 13px;
+        padding: 10px;
+    }
+
     .stats-summary {
         grid-template-columns: 1fr 1fr;
+        gap: 6px;
+    }
+
+    .stat-card .number {
+        font-size: 18px;
+    }
+
+    .stat-card .label {
+        font-size: 10px;
+    }
+
+    .charts-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+    }
+
+    .chart-card canvas {
+        max-width: 80px;
+        max-height: 80px;
+    }
+
+    .chart-card .chart-title {
+        font-size: 11px;
+    }
+
+    .chart-card .chart-value {
+        font-size: 12px;
+    }
+
+    .question-text {
+        font-size: 15px;
+        padding: 12px 0;
+    }
+
+    .answer-item {
+        font-size: 14px;
+        padding: 10px 12px;
+    }
+
+    .answer-item .letter {
+        font-size: 14px;
+        width: 22px;
+    }
+
+    .btn-next {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .result-title {
+        font-size: 20px;
+    }
+
+    .result-icon {
+        font-size: 40px;
+    }
+
+    .result-score {
+        font-size: 16px;
+    }
+
+    .btn-retry,
+    .btn-home {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .timer {
+        font-size: 12px;
+        min-width: 40px;
+    }
+
+    #progress-text {
+        font-size: 12px;
+    }
+
+    .auth-tab {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .auth-form input {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+
+    .auth-btn {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .theory-content {
+        padding: 12px;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .theory-content h1 {
+        font-size: 18px;
+        padding-bottom: 6px;
+    }
+
+    .theory-content h2 {
+        font-size: 16px;
+        margin-top: 16px;
+    }
+
+    .theory-content h3 {
+        font-size: 15px;
+        margin-top: 12px;
+    }
+
+    .theory-content table {
+        font-size: 12px;
+    }
+
+    .theory-content th,
+    .theory-content td {
+        padding: 4px 6px;
+    }
+
+    .theory-content ul,
+    .theory-content ol {
+        padding-left: 14px;
+    }
+
+    .admin-stat-card .number {
+        font-size: 18px;
+    }
+
+    .admin-stat-card .label {
+        font-size: 11px;
+    }
+
+    .question-admin-item .text {
+        font-size: 12px;
+    }
+
+    .btn-sm {
+        font-size: 11px;
+        padding: 3px 8px;
+    }
+
+    .modal-content {
+        padding: 12px;
+        margin: 6px;
+        width: 98%;
+    }
+
+    .modal-content h2 {
+        font-size: 16px;
+    }
+
+    .modal-content label {
+        font-size: 13px;
+    }
+
+    .modal-content input,
+    .modal-content textarea {
+        font-size: 13px;
+        padding: 6px 8px;
+    }
+
+    .modal-actions .btn {
+        font-size: 13px;
+        padding: 8px 12px;
     }
 }
